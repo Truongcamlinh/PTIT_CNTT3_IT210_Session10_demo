@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký mượn thiết bị</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Form đăng ký mượn thiết bị</h4>
+        </div>
+
+        <div class="card-body">
+            <form th:action="@{/borrow}" th:object="${borrowForm}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên</label>
+                    <input class="form-control" th:field="*{fullName}" placeholder="Nhập họ tên">
+                    <div class="text-danger small" th:errors="*{fullName}"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mã sinh viên</label>
+                    <input class="form-control" th:field="*{studentCode}" placeholder="VD: PT12345">
+                    <div class="text-danger small" th:errors="*{studentCode}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" th:field="*{email}" placeholder="example@gmail.com">
+                    <div class="text-danger small" th:errors="*{email}"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số lượng</label>
+                    <input type="number" class="form-control" th:field="*{quantity}">
+                    <div class="text-danger small" th:errors="*{quantity}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Ngày nhận</label>
+                        <input type="date" class="form-control" th:field="*{startDate}">
+                        <div class="text-danger small" th:errors="*{startDate}"></div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Ngày trả</label>
+                        <input type="date" class="form-control" th:field="*{endDate}">
+                        <div class="text-danger small" th:errors="*{endDate}"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Lý do mượn</label>
+                    <textarea class="form-control" th:field="*{reason}" rows="3"></textarea>
+                    <div class="text-danger small" th:errors="*{reason}"></div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="/" class="btn btn-secondary">Quay lại</a>
+                    <button type="submit" class="btn btn-success">Gửi đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

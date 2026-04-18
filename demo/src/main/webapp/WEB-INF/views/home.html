@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Danh sách thiết bị</h2>
+
+<div th:if="${success}" style="color:green">
+    [[${success}]]
+</div>
+
+<ul>
+    <li th:each="d : ${devices}">
+        [[${d.name}]] - SL: [[${d.quantity}]]
+        <a th:href="@{/borrow}">Mượn</a>
+    </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách thiết bị</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+<h2 class="mb-4">Danh sách thiết bị / Phòng Lab</h2>
+
+<!-- Thông báo thành công -->
+<div th:if="${message}" class="alert alert-success">
+    [[${message}]]
+</div>
+
+<!-- Danh sách thiết bị -->
+<div class="row">
+    <div class="col-md-4 mb-3" th:each="device : ${devices}">
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h5 class="card-title" th:text="${device.name}"></h5>
+
+                <p class="card-text">
+                    Số lượng còn:
+                    <b th:text="${device.quantity}"></b>
+                </p>
+
+                <a th:href="@{'/borrow/' + ${device.id}}"
+                   class="btn btn-primary">
+                    Mượn ngay
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

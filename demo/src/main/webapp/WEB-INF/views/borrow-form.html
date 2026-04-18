@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/borrow}" th:object="${borrow}" method="post">
+
+  Tên: <input th:field="*{name}"/>
+  <p th:errors="*{name}"></p>
+
+  MSSV: <input th:field="*{studentId}"/>
+  <p th:errors="*{studentId}"></p>
+
+  Email: <input th:field="*{email}"/>
+  <p th:errors="*{email}"></p>
+
+  Số lượng: <input th:field="*{quantity}"/>
+
+  Ngày nhận: <input type="date" th:field="*{startDate}"/>
+  <p th:errors="*{startDate}"></p>
+
+  Ngày trả: <input type="date" th:field="*{endDate}"/>
+
+  Lý do: <textarea th:field="*{reason}"></textarea>
+
+  <button type="submit">Submit</button>
+
+</form>Ï
+</body>
+</html>
